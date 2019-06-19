@@ -38,7 +38,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
-        android:id="@+id/projects"
+        android:id="@+id/the_list"
         android:layout_width="679dp"
         android:layout_height="303dp"
         android:layout_marginTop="8dp"
@@ -60,6 +60,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/projects"
+        app:layout_constraintTop_toBottomOf="@+id/provinceListVw"
         app:layout_constraintVertical_bias="1.0" />
 </android.support.constraint.ConstraintLayout>

@@ -13,11 +13,13 @@
         <activity android:name=".AddReport" />
         <activity android:name=".ProjectInfo" />
         <activity android:name=".ProjectsPerProvince" />
-        <activity android:name=".selectProvince" />
-        <activity android:name=".SelectEntity" />
+        <activity android:name=".SelectProvince" />
+        <!--<activity android:name=".SelectEntity" />-->
+        <activity android:name=".LoginActivity" />
         <activity android:name=".MainMenu" />
 
-        <activity android:name=".LoginActivity"
+        <activity android:name=".SelectEntity"
+            android:screenOrientation="landscape"
             android:label="@string/title_activity_login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

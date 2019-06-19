@@ -1,28 +1,31 @@
 package com.practice.cetamonitoring;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.widget.Adapter;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 
 public class SelectEntity extends AppCompatActivity {
     private EditText searchFilter;
-    private ListView list=(ListView)findViewById(R.id.projects);
-    private Adapter mAdapter;
+    private ListView list;
+    private ArrayAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_entities);
         searchFilter = (EditText) findViewById(R.id.searchFilter);
-       // list = (ListView)findViewById(R.id.the_List);
+        list = (ListView)findViewById(R.id.the_list);
+
+        list.setAdapter(entities());
 
         searchFilter.addTextChangedListener(new TextWatcher() {
             @Override
@@ -32,7 +35,7 @@ public class SelectEntity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                //(SelectEntity.this).entities().getFilter().filter(s);
+                (SelectEntity.this).entities().getFilter().filter(s);
 
             }
 
@@ -41,9 +44,17 @@ public class SelectEntity extends AppCompatActivity {
 
             }
         });
+
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(SelectEntity.this, SelectProvince.class);
+                startActivity(intent);
+            }
+        });
     }
 
-    private Adapter entities() {
+    private ArrayAdapter entities() {
         ArrayList<String> entity = new ArrayList<>();
         entity.add("GautengEntity");
         entity.add("TshwaneEntity");
@@ -51,8 +62,7 @@ public class SelectEntity extends AppCompatActivity {
         entity.add("cptEntity");
         entity.add("PTAEntity");
         entity.add("limpEntity");
-        mAdapter = new ArrayAdapter(this, R.layout.activity_select_entities, entity);
-        list.setAdapter((ListAdapter) mAdapter);
+        mAdapter = new ArrayAdapter(this, R.layout.select_listview, entity);
         return mAdapter;
     }
 }
